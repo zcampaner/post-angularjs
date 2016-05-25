@@ -1,13 +1,13 @@
 $postModule = angular.module('postModule', []);
 var base_path = document.getElementById('base_path').value;
+var url = base_path+'ajax.php';
+
 $postModule.controller('PostController',function($scope, $http){
 	$scope.post = {};
 	$scope.post.users = [];
 	$scope.tempUser = {};
 	$scope.editMode = false;
 	$scope.index = '';
-	
-	var url = base_path+'ajax.php';
 	
 	$scope.saveUser = function(){
 	    $http({
@@ -55,11 +55,11 @@ $postModule.controller('PostController',function($scope, $http){
 		$scope.editMode = false;
 		$scope.index = '';
 	}
-	
+/*	
 	$scope.updateUser = function(){
 		$('.btn-save').button('loading');
 		$scope.saveUser();
-	}
+	}*/
 	
 	$scope.editUser = function(user){
 		$scope.tempUser = {
@@ -96,7 +96,23 @@ $postModule.controller('PostController',function($scope, $http){
 		    });
 		}
 	}
-	
+
+
+	$scope.logoutUser = function() {
+
+		$http({
+			url: url,
+			data: $.param({'type' : 'logout_user'})
+		}).success(function(data, status, headers, config) {
+			alert(data);
+			window.location = 'login.php';
+		}).error(function(data, status, headers, config) {
+			alert('error');
+		});
+
+	}
+
+
 	$scope.init = function(){
 	    $http({
 	      method: 'post',
@@ -155,4 +171,37 @@ $postModule.controller('PostController',function($scope, $http){
 		}
 	}
 	
+});
+
+$loginModule = angular.module('loginModule', []);
+$loginModule.controller('loginController', function($scope, $http) {
+	$scope.loginUser = function(user) {
+
+		$http({
+			method: 'post',
+		    url: url,
+		    data: $.param({'user' : $scope.tempUser, 'type' : 'login_user' }),
+		    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+		}).success(function(data, status, headers, config) {
+			if (data.data.exists == true) {
+				window.location = 'index.php';
+			} else {
+				alert('access denied');
+			}
+			
+		}).error(function(data, status, headers, config) {
+			alert('error');
+		});
+
+	}
+
+	$scope.getError = function(error, name){
+		if(angular.isDefined(error)){
+			if(error.required && name == 'username'){
+				return "Please enter username";
+			}else if(error.required && name == 'password'){
+				return "Please enter password";
+			}
+		}
+	}
 });

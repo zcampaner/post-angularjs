@@ -3,6 +3,7 @@
 Site : http:www.smarttutorials.net
 Author :muni
 */
+
 require_once 'config.php';
 
 if( isset($_POST['type']) && !empty($_POST['type'] ) ){
@@ -17,6 +18,9 @@ if( isset($_POST['type']) && !empty($_POST['type'] ) ){
 			break;
 		case "getUsers":
 			getUsers($mysqli);
+			break;
+		case "login_user":
+			loginUser($mysqli);
 			break;
 		default:
 			invalidRequest();
@@ -135,7 +139,52 @@ function invalidRequest()
 	exit;
 }
 
+/**
+ * This function will handle user login functionality
+ * @throws Exception
+ */
 
+function loginUser($mysqli)
+{
+	$username = $mysqli->real_escape_string(isset( $_POST['user']['username'] ) ? $_POST['user']['username'] : '');
+	$userpass = $mysqli->real_escape_string(isset( $_POST['user']['password'] ) ? $_POST['user']['password'] : '');
+
+	try {
+
+		$query = "SELECT * FROM `users` WHERE username = '$username' AND userpass = '$userpass' LIMIT 1";
+		$result = $mysqli->query( $query );
+		if ($row = $result->fetch_assoc()) {
+			$data['success'] = true;
+			$data['data']['exists'] = true;
+			$_SESSION['user_id'] = $row['user_id'];
+		} else {
+			$data['data']['exists'] = false;
+			$data['success'] = true;
+		}
+
+		echo json_encode($data);exit;	
+
+	} catch (Exception $e) {
+
+		$data['success'] = false;
+		$data['data'] = [];
+
+		echo json_encode($data);exit;		
+	}
+	
+}
+
+/**
+ * This function will handle user logout functionality
+ * @throws Exception
+ */
+
+function logoutUser($mysqli)
+{
+	session_destroy();
+	unset($_SESSION['user_id']);
+	echo json_encode($_SESSION);	
+}
 
 
 
