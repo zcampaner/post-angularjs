@@ -1,7 +1,6 @@
-<?php 
-session_start();
+<?php require_once 'config.php';
+// session_start();
 if (!isset($_SESSION['user_id'])) header('location: login.php');
-require_once 'config.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -51,7 +50,7 @@ require_once 'config.php';
 					<li><a href="#"> <i class="fa fa-book"></i> Demo </a></li>
 					<li><a href="#"> <i class="fa fa-bank"></i> Blog </a></li>
 					<li><a href="#"> <i class="fa fa-file"></i> Forum </a></li>
-					<li><a onclick="function(){alert('jeje');}" data-ng-click="logoutUser()"> Logout </a></li>
+					<li><a href="#" data-ng-click="logoutUser()"> Logout </a></li>
 				</ul>
 			</div>
 			<!--/.nav-collapse -->

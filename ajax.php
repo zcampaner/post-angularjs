@@ -3,7 +3,6 @@
 Site : http:www.smarttutorials.net
 Author :muni
 */
-
 require_once 'config.php';
 
 if( isset($_POST['type']) && !empty($_POST['type'] ) ){
@@ -21,6 +20,9 @@ if( isset($_POST['type']) && !empty($_POST['type'] ) ){
 			break;
 		case "login_user":
 			loginUser($mysqli);
+			break;
+		case "logout_user":
+			logoutUser();
 			break;
 		default:
 			invalidRequest();
@@ -179,11 +181,9 @@ function loginUser($mysqli)
  * @throws Exception
  */
 
-function logoutUser($mysqli)
+function logoutUser()
 {
-	session_destroy();
-	unset($_SESSION['user_id']);
-	echo json_encode($_SESSION);	
+	session_destroy();	
 }
 
 

@@ -3,7 +3,7 @@
 Site : http:www.smarttutorials.net
 Author :muni
 */
-// session_start();
+session_start();
 
 
 //site specific configuration declartion

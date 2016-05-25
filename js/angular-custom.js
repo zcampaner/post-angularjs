@@ -101,10 +101,11 @@ $postModule.controller('PostController',function($scope, $http){
 	$scope.logoutUser = function() {
 
 		$http({
-			url: url,
-			data: $.param({'type' : 'logout_user'})
+			method: 'post',
+	    	url: url,
+	    	data: $.param({ 'type' : 'logout_user' }),
+	    	headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 		}).success(function(data, status, headers, config) {
-			alert(data);
 			window.location = 'login.php';
 		}).error(function(data, status, headers, config) {
 			alert('error');
