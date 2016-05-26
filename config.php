@@ -3,15 +3,15 @@
 Site : http:www.smarttutorials.net
 Author :muni
 */
+
 session_start();
 
-
 //site specific configuration declartion
-define( 'BASE_PATH', 'http://localhost/post-angularjs/');
+define( 'BASE_PATH', 'http://localhost/angular-v3/');
 define('DB_HOST', 'localhost');
 define('DB_NAME', 'post');
 define('DB_USERNAME','root');
-define('DB_PASSWORD','');
+define('DB_PASSWORD','root');
 
 
 $mysqli  = new mysqli(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);

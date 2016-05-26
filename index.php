@@ -1,7 +1,4 @@
-<?php require_once 'config.php';
-// session_start();
-if (!isset($_SESSION['user_id'])) header('location: login.php');
-?>
+<?php require_once 'config.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +15,7 @@ if (!isset($_SESSION['user_id'])) header('location: login.php');
 	<meta name="description" content="AngularJS Insert Update Delete Using PHP MySQL, angularjs php mysql crud, add update delete in angularjs, php angularjs mysql insert delete update">
 	<meta name="keywords" content="AngularJS Insert Update Delete Using PHP MySQL, angularjs php mysql crud, add update delete in angularjs, php angularjs mysql insert delete update">
 	<meta name="author" content="https://plus.google.com/+MuniAyothi/">
-	<title>AngularJS by DWH CMS Team</title>
+	<title>AngularJS By DWH Api Team</title>
 	
 	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,200' rel='stylesheet' type='text/css'>
 	
@@ -42,7 +39,7 @@ if (!isset($_SESSION['user_id'])) header('location: login.php');
 					<span class="icon-bar"></span> 
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">AngularJS by DWH CMS Team</a>
+				<a class="navbar-brand" href="#" style="font-size: 12px;">AngularJS DWH Api Team</a>
 			</div>
 			<div id="navbar" class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
@@ -73,7 +70,7 @@ if (!isset($_SESSION['user_id'])) header('location: login.php');
 		</div>
 
 		<div class="clearfix"></div>
-		<h2 class="title text-center"> AngularJS by DWH CMS Team</h2>
+		<!-- <h2 class="title text-center"> AngularJS Insert Update Delete Using PHP MySQL</h2> -->
 
 		<div class="row mt80">
 			<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 animated fadeInDown">

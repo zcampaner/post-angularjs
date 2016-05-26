@@ -23,9 +23,6 @@ if( isset($_POST['type']) && !empty($_POST['type'] ) ){
 			break;
 		case "logout_user":
 			logoutUser();
-			break;
-		default:
-			invalidRequest();
 	}
 }else{
 	invalidRequest();
@@ -140,6 +137,7 @@ function invalidRequest()
 	echo json_encode($data);
 	exit;
 }
+
 
 /**
  * This function will handle user login functionality

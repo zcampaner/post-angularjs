@@ -9,6 +9,8 @@ $postModule.controller('PostController',function($scope, $http){
 	$scope.editMode = false;
 	$scope.index = '';
 	
+	var url = base_path+'ajax.php';
+	
 	$scope.saveUser = function(){
 	    $http({
 	      method: 'post',
@@ -55,11 +57,11 @@ $postModule.controller('PostController',function($scope, $http){
 		$scope.editMode = false;
 		$scope.index = '';
 	}
-/*	
+	
 	$scope.updateUser = function(){
 		$('.btn-save').button('loading');
 		$scope.saveUser();
-	}*/
+	}
 	
 	$scope.editUser = function(user){
 		$scope.tempUser = {
@@ -87,6 +89,7 @@ $postModule.controller('PostController',function($scope, $http){
 		    	if(data.success){
 		    		var index = $scope.post.users.indexOf(user);
 		    		$scope.post.users.splice(index, 1);
+
 		    	}else{
 		    		$scope.messageFailure(data.message);
 		    	}
@@ -96,8 +99,7 @@ $postModule.controller('PostController',function($scope, $http){
 		    });
 		}
 	}
-
-
+	
 	$scope.logoutUser = function() {
 
 		$http({
@@ -112,7 +114,6 @@ $postModule.controller('PostController',function($scope, $http){
 		});
 
 	}
-
 
 	$scope.init = function(){
 	    $http({
