@@ -7,7 +7,7 @@ Author :muni
 session_start();
 
 //site specific configuration declartion
-define( 'BASE_PATH', 'http://localhost/angular-v3/');
+define( 'BASE_PATH', 'http://localhost/post/');
 define('DB_HOST', 'localhost');
 define('DB_NAME', 'post');
 define('DB_USERNAME','root');
